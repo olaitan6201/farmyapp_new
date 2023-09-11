@@ -64,7 +64,6 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 
 				{children}
 
-				{/* <button className="sign_bt" >Submit</button> */}
 				<button className='sign_bt' disabled={isLoading}>
 					{isLoading ? (
 						<span className='loading-spinner'></span>
