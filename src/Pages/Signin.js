@@ -55,7 +55,8 @@ export default function Signin() {
 	}, [selectedButton]);
 
 	return (
-		<div className="signContainer" style={{ gap: "8px" }}>
+		<div className="signContainer_">
+<div className="signContainer" style={{ gap: "8px" }}>
 			{/* Desktop Left Bar */}
 			<div className="signutarget">
 				{SignInOptions.map(({ type, title, Logo }) => (
@@ -88,8 +89,10 @@ export default function Signin() {
 
 			{/* Page Content */}
 			<div className="signufform">
+			<div className="signup-logo">
 				<img src={loho} alt="FarmyApp logo" className="lohosm" />
 				<div>Welcome to FarmyApp</div>
+				</div>
 				<div>
 					<div className="signtext">Sign in as</div>
 					<div className="targets">
@@ -121,6 +124,7 @@ export default function Signin() {
 				</div>
 				<SignInForm apiPath={selectedOption.apiPath} />
 			</div>
+		</div>
 		</div>
 	);
 }

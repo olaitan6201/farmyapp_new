@@ -45,7 +45,8 @@ export default function Signup() {
 	};
 
 	return (
-		<div className="signContainer" style={{ gap: "8px" }}>
+		<div className="signContainer_">
+<div className="signContainer" style={{ gap: "8px" }}>
 			{/* <div> */}
 			<div className="signutarget">
 				{SignUpOptions.map(({ type, title, Logo }) => (
@@ -77,8 +78,10 @@ export default function Signup() {
 				{/* </div> */}
 			</div>
 			<div className="signufform">
+				<div className="signup-logo">
 				<img src={loho} alt="FarmyApp logo" className="lohosm" />
 				<div>Welcome to FarmyApp</div>
+				</div>
 				<div>
 					<div className="signtext">Sign up as</div>
 					<div className="targets">
@@ -113,6 +116,7 @@ export default function Signup() {
 				{selectedButton === "farm" && <SignUFForm />}
 				{selectedButton === "Logistics" && <SignULForm />}
 			</div>
+		</div>
 		</div>
 	);
 }

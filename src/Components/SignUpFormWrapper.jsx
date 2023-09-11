@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
+import { FcGoogle } from 'react-icons/fc'
 import toastr from 'toastr';
 import 'toastr/build/toastr.min.css'
 import axiosClient from '../clients/axios-client';
@@ -71,9 +72,20 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 						'Submit'
 					)}
 				</button>
+				<div className='dash-bt google-bt'>
+				<p>-------- or ---------</p>
+				</div>
+				<button className='google-bt ' disabled={isLoading}>
+				<FcGoogle className='google-icon'/>
+					{isLoading ? (
+						<span className='loading-spinner'></span>
+					) : (
+						'Signin with Google'
+					)}
+				</button>
+				<div className='already1'>Already have an account? <Link to='/signin' className='signalt'>Log in</Link></div>
 
 			</form>
-			<div className='already1'>Already have an account? <Link to='/signin' className='signalt'>Log in</Link></div>
 		</div>
 	)
 }
