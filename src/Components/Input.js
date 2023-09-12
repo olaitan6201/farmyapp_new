@@ -28,7 +28,7 @@ const Input = props => {
     isValid: props.initialValid || false
   });
 
-  const { id, onInput } = props;
+  const { id, onInput, element } = props;
   const { value, isValid } = inputState;
 
   useEffect(() => {
@@ -50,19 +50,25 @@ const Input = props => {
     });
   };
 
-  const element =
-    props.element === 'input' ? (
-      <input
-        id={props.id}
-        type={props.type}
-        placeholder={props.placeholder}
-        onChange={changeHandler}
-        onBlur={touchHandler}
-        value={inputState.value}
-        className="form_input form_inp"
-      />
-    ) : (
-      <textarea
+  let inputElement;
+
+  switch (element) {
+    case 'input':
+      inputElement = (
+        <input
+          id={props.id}
+          type={props.type}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+          className="form_input form_inp"
+        />
+      ) ;
+      break;
+      case 'textarea':
+      inputElement = (
+        <textarea
         id={props.id}
         rows={props.rows || 3}
         onChange={changeHandler}
@@ -70,7 +76,28 @@ const Input = props => {
         value={inputState.value}
         className="form_input form_inp"
       />
-    );
+      );
+      break;
+      case 'select':
+      inputElement = (
+        <select
+          id={id}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+          className="form_input form_select"
+        >
+          {props.options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.displayValue}
+            </option>
+          ))}
+        </select>
+      );
+      break;
+      default:
+      inputElement = null;
+  }
 
   return (
     <div
@@ -79,7 +106,7 @@ const Input = props => {
         'waitlist_post--invalid'}`}
     >
       <label className="form_label" htmlFor={props.id}>{props.label}</label>
-      {element}
+      {inputElement}
       {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
     </div>
   );
