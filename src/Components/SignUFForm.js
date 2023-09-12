@@ -73,14 +73,17 @@ const SignUFForm = () => {
             errorText="Please enter your farm address."
             onInput={inputHandler}
           />
-		  <Input
+		   <Input
             id="city"
-            element="input"
-            type="text"
+            element="select"
             label="City"
-            placeholder="Enter your city of Farm operation here"
+			options={[
+			   { value: '', displayValue: 'Enter your city of farm operation here' },
+               { value: 'lagos', displayValue: 'Lagos' },
+               { value: 'ibadan', displayValue: 'Ibadan' },
+            ]}
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter your city."
+			errorText="Please enter your city of farm operation here."
             onInput={inputHandler}
           />
 		  <Input

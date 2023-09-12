@@ -80,22 +80,28 @@ const SignUSForm = () => {
           />
 		  <Input
             id="city"
-            element="input"
-            type="text"
+            element="select"
             label="City"
-            placeholder="Enter your city of store operation here"
+			options={[
+			   { value: '', displayValue: 'Enter your city of store operation here' },
+               { value: 'lagos', displayValue: 'Lagos' },
+               { value: 'ibadan', displayValue: 'Ibadan' },
+            ]}
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter your city."
+			errorText="Please enter your city of store operation here."
             onInput={inputHandler}
           />
 		  <Input
             id="state"
-            element="input"
-            type="text"
+            element="select"
             label="State"
-            placeholder="Enter your state of store operation here"
+			options={[
+			   { value: '', displayValue: 'Enter your state of store operation here' },
+               { value: 'lagos', displayValue: 'Lagos' },
+               { value: 'oyo', displayValue: 'Oyo' },
+            ]}
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter your state."
+			errorText="Please enter your state of store operation here."
             onInput={inputHandler}
           />
 		  <Input

@@ -48,6 +48,10 @@
     align-self:center;
 }
 
+.form_options{
+    color: var(--color-tertiary-shade1);
+}
+
 .disabled{
     cursor: not-allowed;
 }

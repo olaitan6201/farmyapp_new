@@ -85,10 +85,10 @@ const Input = props => {
           onChange={changeHandler}
           onBlur={touchHandler}
           value={inputState.value}
-          className="form_input form_select"
+          className="form_input form_select form_options"
         >
           {props.options.map((option) => (
-            <option key={option.value} value={option.value}>
+            <option key={option.value} value={option.value} >
               {option.displayValue}
             </option>
           ))}

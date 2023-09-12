@@ -91,7 +91,7 @@
 .form_select{
     border-bottom: 1px solid var(--color-tertiary);
     border-radius: 0;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .sign_form {

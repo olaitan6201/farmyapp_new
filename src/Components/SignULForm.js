@@ -98,7 +98,7 @@ const SignULForm = () => {
             element="select"
             label="city Of Operation"
 			options={[
-				{ value: '', displayValue: '' },
+				{ value: '', displayValue: 'Enter your city of Operation.' },
                { value: 'lagos', displayValue: 'Lagos' },
                { value: 'ibadan', displayValue: 'Ibadan' },
             ]}
@@ -111,7 +111,7 @@ const SignULForm = () => {
             element="select"
             label="Type Of Mobility"
 			options={[
-				{ value: '', displayValue: '' },
+				{ value: '', displayValue: 'Enter your type of mobility' },
                { value: 'car', displayValue: 'Car' },
                { value: 'bus', displayValue: 'Bus' },
 			   { value: 'bike', displayValue: 'Bike' },
