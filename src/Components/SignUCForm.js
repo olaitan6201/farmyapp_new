@@ -3,7 +3,7 @@ import "toastr/build/toastr.min.css";
 import SignUpFormWrapper from "./SignUpFormWrapper";
 import Input from './Input';
 import { useForm } from "../hooks/form";
-import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from "../validation/Validators";
+import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../validation/Validators";
 
 // import loho from '../static/FARMY EMB green..png'
 // import SignUTargetM from './SignUTargetM'
@@ -37,7 +37,7 @@ const SignUFForm = () => {
 	  );
 
     const formData = {
-		name: formState.inputs.username.value,
+		name: formState.inputs.name.value,
 		username: formState.inputs.username.value,
 		email: formState.inputs.email.value,
 		phoneNumber: formState.inputs.phoneNumber.value,
@@ -101,11 +101,11 @@ const SignUFForm = () => {
 		  <Input
             id="password"
             element="input"
-            type="text"
+            type="password"
             label="Password"
             placeholder="Enter your password here"
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Please enter your password."
+            validators={[VALIDATOR_MINLENGTH(6)]}
+            errorText="Password not strong!."
             onInput={inputHandler}
           />
 		  <div className="waitlist_post">

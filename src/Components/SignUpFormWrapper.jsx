@@ -30,7 +30,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		console.log(formData);
-
+		console.log(apiPath);
 
 	 if (apiPath.trim().length === 0) return;
 
@@ -46,7 +46,6 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, 
 		try {
 			const authRes = await axiosClient.post(`/${apiPath}/`, JSON.stringify(formData))
 			if (!authRes) return
-			console.log(apiPath);
  
 			const res = await fetchUserData(apiPath)
 			if (!res) return
@@ -60,7 +59,6 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, 
 		} finally {
 			setLoading(false)
 		}
-		console.log('clickeed')
 	}
 
 	return (
