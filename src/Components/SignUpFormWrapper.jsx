@@ -7,7 +7,7 @@ import toastr from 'toastr';
 import 'toastr/build/toastr.min.css'
 import axiosClient from '../clients/axios-client';
 
-const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }) => {
+const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, formState }) => {
 	const navigate = useNavigate()
 
 	const [isLoading, setLoading] = useState(false)
@@ -29,8 +29,10 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		console.log(formData);
 
-		if (apiPath.trim().length === 0) return;
+
+	 if (apiPath.trim().length === 0) return;
 
 		setLoading(true)
 
@@ -44,7 +46,8 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 		try {
 			const authRes = await axiosClient.post(`/${apiPath}/`, JSON.stringify(formData))
 			if (!authRes) return
-
+			console.log(apiPath);
+ 
 			const res = await fetchUserData(apiPath)
 			if (!res) return
 
@@ -57,6 +60,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 		} finally {
 			setLoading(false)
 		}
+		console.log('clickeed')
 	}
 
 	return (
@@ -65,7 +69,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 
 				{children}
 
-				<button className='sign_bt' disabled={isLoading}>
+				<button className={`sign_bt ${formState && 'disabled'}`}  disabled={isLoading || formState}>
 					{isLoading ? (
 						<span className='loading-spinner'></span>
 					) : (
@@ -75,7 +79,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 				<div className='dash-bt google-bt'>
 				<p>-------- or ---------</p>
 				</div>
-				<button className='google-bt ' disabled={isLoading}>
+				<button className='google-bt' disabled={isLoading}>
 				<FcGoogle className='google-icon'/>
 					{isLoading ? (
 						<span className='loading-spinner'></span>

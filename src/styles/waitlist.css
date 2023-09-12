@@ -28,6 +28,12 @@
     text-align: left;
 }
 
+.waitlist_post--invalid{
+    color: red;
+    border: red;
+    font-size: 12px;
+}
+
 .form_label {
     width: 50px;
     font-size: 12px;
@@ -40,6 +46,10 @@
     padding: 10px;
     width: 95%;
     align-self:center;
+}
+
+.disabled{
+    cursor: not-allowed;
 }
 
 .pos_bt {
