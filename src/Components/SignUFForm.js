@@ -1,118 +1,141 @@
-import React, { useState } from "react";
+import React from "react";
 import "toastr/build/toastr.min.css";
 import SignUpFormWrapper from "./SignUpFormWrapper";
-
-// import loho from '../static/FARMY EMB green..png'
-// import SignUTargetM from './SignUTargetM'
+import Input from './Input';
+import { useForm } from "../hooks/form";
+import { VALIDATOR_EMAIL, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../validation/Validators";
 
 const SignUFForm = () => {
-	const [formData, setFormData] = useState({
-		farmName: "",
-		farmAddress: "",
-		city: "",
-		email: "",
-		password: "",
-		username: "",
-		phoneNumber: "",
-	});
+	const [formState, inputHandler] = useForm(
+		{  
+			farmName: {
+			value: "",
+			isValid: false,
+		  },
+		   farmAddress: {
+			value: "",
+			isValid: false,
+		  },
+		  city: {
+			value: "",
+			isValid: false,
+		  },
+		  username: {
+			value: "",
+			isValid: false,
+		  },
+		  email: {
+			value: "",
+			isValid: false,
+		  },
+		 phoneNumber: {
+				value: "",
+				isValid: false,
+			  },
+		  password: {
+			value: "",
+			isValid: false,
+		  }
+		},
+		false
+	  );
 
-	const {
-		farmName,
-		farmAddress,
-		city,
-		email,
-		password,
-		username,
-		phoneNumber,
-	} = formData;
-
-	const handleInput = (e) => {
-		const { id, value } = e.target;
-		setFormData((prev) => ({
-			...prev,
-			[id]: value,
-		}));
-	};
+    const formData = {
+		farmName: formState.inputs.farmName.value,
+		farmAddress: formState.inputs.farmAddress.value,
+		city: formState.inputs.city.value,
+		username: formState.inputs.username.value,
+		email: formState.inputs.email.value,
+		phoneNumber: formState.inputs.phoneNumber.value,
+		password: formState.inputs.password.value,
+	}
+	 
 
 	return (
-		<SignUpFormWrapper formData={formData} apiPath="farm">
-			<div className="waitlist_post">
-				<label className="form_label">Farm Name</label>
-				<input
-					type="text"
-					onChange={handleInput}
-					value={farmName}
-					id="farmName"
-					className="form_input form_inp"
-					placeholder={"Your farm name"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">Farm Address</label>
-				<input
-					type="text"
-					onChange={handleInput}
-					value={farmAddress}
-					id="farmAddress"
-					className="form_input form_inp"
-					placeholder={"Enter the address to you farm here"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">City</label>
-				<input
-					type="text"
-					onChange={handleInput}
-					value={city}
-					id="city"
-					className="form_input form_inp"
-					placeholder={"Enter your city of Farm operation here"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">Username</label>
-				<input
-					type="test"
-					onChange={handleInput}
-					value={username}
-					id="username"
-					className="form_input form_inp"
-					placeholder={"Enter your username here"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">Email</label>
-				<input
-					type="email"
-					onChange={handleInput}
-					value={email}
-					id="email"
-					className="form_input form_inp"
-					placeholder={"Your email"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">Phone Number</label>
-				<input
-					type="text"
-					onChange={handleInput}
-					value={phoneNumber}
-					id="phoneNumber"
-					className="form_input form_inp"
-					placeholder={"Enter your correct phone number here"}
-				/>
-			</div>
-			<div className="waitlist_post">
-				<label className="form_label">Password</label>
-				<input
-					type="password"
-					onChange={handleInput}
-					value={password}
-					id="password"
-					className="form_input form_inp"
-					placeholder={"Enter your password here"}
-				/>
-			</div>
+		<SignUpFormWrapper formData={formData} apiPath="farm" formState={!formState.isValid}>
+			<Input
+            id="farmName"
+            element="input"
+            type="text"
+            label="Farm Name"
+            placeholder="Your farm name"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter your farm name."
+            onInput={inputHandler}
+          />
+		  <Input
+            id="farmAddress"
+            element="input"
+            type="text"
+            label="Farm Address"
+            placeholder="Enter the address to your farm here"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter your farm address."
+            onInput={inputHandler}
+          />
+		   <Input
+            id="city"
+            element="select"
+            label="City"
+			options={[
+			   { value: '', displayValue: 'Enter your city of farm operation here' },
+               { value: 'lagos', displayValue: 'Lagos' },
+               { value: 'ibadan', displayValue: 'Ibadan' },
+            ]}
+            validators={[VALIDATOR_REQUIRE()]}
+			errorText="Please enter your city of farm operation here."
+            onInput={inputHandler}
+          />
+		  <Input
+            id="username"
+            element="input"
+            type="text"
+            label="Username"
+            placeholder="Enter your username here"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a userName."
+            onInput={inputHandler}
+          />
+		  <Input
+            id="email"
+            element="input"
+            type="text"
+            label="Email"
+            placeholder="Your email"
+            validators={[VALIDATOR_EMAIL()]}
+            errorText="Please enter your correct email address."
+            onInput={inputHandler}
+          />
+		   <Input
+            id="phoneNumber"
+            element="input"
+            type="text"
+            label="Phone Number"
+            placeholder="Enter your correct phone number here"
+            validators={[VALIDATOR_MAXLENGTH(11)]}
+            errorText="Please enter your phone number."
+            onInput={inputHandler}
+          />
+		  <Input
+            id="password"
+            element="input"
+            type="password"
+            label="Password"
+            placeholder="Enter your password here"
+            validators={[VALIDATOR_MINLENGTH(6)]}
+            errorText="Please enter your password."
+            onInput={inputHandler}
+          />
+		  <div className="form_terms">
+		  <Input
+            id="terms"
+            element="checkbox"
+            type="checkbox"
+            validators={[VALIDATOR_REQUIRE()]}
+            onInput={inputHandler}
+          />
+		  <p className="form_terms_msg">I have agreed to FarmyApp Terms and Conditons</p>
+		  </div>
 		</SignUpFormWrapper>
 	);
 };

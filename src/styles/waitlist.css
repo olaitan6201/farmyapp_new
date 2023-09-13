@@ -28,9 +28,15 @@
     text-align: left;
 }
 
+.waitlist_post--invalid{
+    color: red;
+    border: red;
+    font-size: 12px;
+}
+
 .form_label {
     width: 50px;
-    font-size: medium;
+    font-size: 12px;
     font-weight: bold;
     padding-right: 10px;
     
@@ -38,9 +44,26 @@
 
 .form_input {
     padding: 10px;
-    border-radius: 5px;
     width: 95%;
     align-self:center;
+}
+
+.form_options{
+    color: var(--color-tertiary-shade1);
+}
+
+.form_terms{
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.form_terms_msg{
+    margin-left: 0.5rem;
+}
+
+.disabled{
+    cursor: not-allowed;
 }
 
 .pos_bt {

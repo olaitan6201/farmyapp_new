@@ -1,18 +1,24 @@
+.signContainer_{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center; 
+    margin: 2rem;
+}
+
 .signContainer {
     max-width: var(--container-width-md);
     min-width: var(--container-width-sm);
     min-height: 100vh;
+    font-size: 14px;
     display: flex;
-    margin: auto;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    box-shadow: 5px 5px  5px var(--color-tertiary-tint4);
 }
 
 .targets {
     display: flex;
     justify-content: center;
-    width: var(--container-width-sm);
+    width: 100%;
 }
 
 .signutarget {
@@ -29,6 +35,8 @@
 .signufform {
     flex-basis: 50%;
     background-color: var(--color-white);
+    padding: 1.5rem;
+
 }
 
 .signueach {
@@ -71,16 +79,31 @@
 .signtext {
     display: none;
     visibility: hidden;
+    margin: 1rem;
 }
 
 .form_inp {
     border-bottom: 1px solid var(--color-tertiary);
     border-radius: 0;
+    font-size: 11px;
+}
+
+.form_select{
+    border-bottom: 1px solid var(--color-tertiary);
+    border-radius: 0;
+    font-size: 12px;
 }
 
 .sign_form {
     width: 100%;
     margin: auto;
+}
+
+.signup-logo, .post_sign_dash{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .sign_bt {
@@ -90,7 +113,7 @@
     border-radius: 3px;
     font-weight: bolder;
     color: var(--color-white);
-    margin: auto;
+    margin:auto;
 }
 
 .post_sign {
@@ -110,7 +133,34 @@
     font-weight: bold;
 }
 
+.google-bt{
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 6px;
+    border-radius: 3px;
+    font-weight: bolder;
+    color: var(--color-white);
+    margin-top: 0.3rem;
+}
+
+.dash-bt{
+    background: var(--color-white);
+    color: black;
+    font-size: 12px;
+}
+
+.google-icon{
+    font-size: 22px;
+    padding-right: 6px;
+}
+
 @media(max-width:870px) {
+    .signContainer_{
+        margin:1rem -3rem;
+    }
     .signufform {
         flex-basis: 100%;
     }
@@ -123,6 +173,7 @@
         display: block;
         visibility: visible;
         color: var(--color-primary);
+        text-align: center;
     }
 
     .targets {
@@ -130,8 +181,7 @@
         visibility: visible;
         align-items:center;
         justify-content: center;
-        width: 95%;
-        padding: 10px;
+        width: 100%;
     }
 
     .signutargetm {
@@ -139,8 +189,7 @@
         visibility: visible;
         align-items:center;
         justify-content: space-between;
-        width: 90%;
-        padding: 10px;
+        width: 100%;
         /* margin: 10px 40px; */
     }
     
@@ -151,7 +200,9 @@
         border-radius: 5px;
         min-height: 45px;
         max-height: 60px;
-        margin: 10px 10px;
+        margin: 5px 5px;
+        padding: 5px;
+        font-size: 12px;
     }
     
     .signueach1ms {
@@ -161,6 +212,7 @@
         border-radius: 5px;
         min-height: 45px;
         max-height: 60px;
+        padding:5px;
         background-color: var(--color-primary);
     }
     

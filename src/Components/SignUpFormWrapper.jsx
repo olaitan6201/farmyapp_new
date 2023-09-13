@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
+import { FcGoogle } from 'react-icons/fc'
 import toastr from 'toastr';
 import 'toastr/build/toastr.min.css'
 import axiosClient from '../clients/axios-client';
 
-const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }) => {
+const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, formState }) => {
 	const navigate = useNavigate()
 
 	const [isLoading, setLoading] = useState(false)
@@ -29,7 +30,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		if (apiPath.trim().length === 0) return;
+	 if (apiPath.trim().length === 0) return;
 
 		setLoading(true)
 
@@ -43,7 +44,7 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 		try {
 			const authRes = await axiosClient.post(`/${apiPath}/`, JSON.stringify(formData))
 			if (!authRes) return
-
+ 
 			const res = await fetchUserData(apiPath)
 			if (!res) return
 
@@ -64,17 +65,27 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children }
 
 				{children}
 
-				{/* <button className="sign_bt" >Submit</button> */}
-				<button className='sign_bt' disabled={isLoading}>
+				<button className={`sign_bt ${formState && 'disabled'}`}  disabled={isLoading || formState}>
 					{isLoading ? (
 						<span className='loading-spinner'></span>
 					) : (
 						'Submit'
 					)}
 				</button>
+				<div className='dash-bt google-bt'>
+				<p>-------- or ---------</p>
+				</div>
+				<button className='google-bt' disabled={isLoading}>
+				<FcGoogle className='google-icon'/>
+					{isLoading ? (
+						<span className='loading-spinner'></span>
+					) : (
+						'Signin with Google'
+					)}
+				</button>
+				<div className='already1'>Already have an account? <Link to='/signin' className='signalt'>Log in</Link></div>
 
 			</form>
-			<div className='already1'>Already have an account? <Link to='/signin' className='signalt'>Log in</Link></div>
 		</div>
 	)
 }
