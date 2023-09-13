@@ -212,6 +212,7 @@
         border-radius: 5px;
         min-height: 45px;
         max-height: 60px;
+        padding:5px;
         background-color: var(--color-primary);
     }
     

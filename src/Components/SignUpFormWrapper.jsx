@@ -29,8 +29,6 @@ const SignUpFormWrapper = ({ apiPath = '', formData, hasFile = false, children, 
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		console.log(formData);
-		console.log(apiPath);
 
 	 if (apiPath.trim().length === 0) return;
 

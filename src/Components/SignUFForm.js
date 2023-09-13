@@ -126,6 +126,16 @@ const SignUFForm = () => {
             errorText="Please enter your password."
             onInput={inputHandler}
           />
+		  <div className="form_terms">
+		  <Input
+            id="terms"
+            element="checkbox"
+            type="checkbox"
+            validators={[VALIDATOR_REQUIRE()]}
+            onInput={inputHandler}
+          />
+		  <p className="form_terms_msg">I have agreed to FarmyApp Terms and Conditons</p>
+		  </div>
 		</SignUpFormWrapper>
 	);
 };

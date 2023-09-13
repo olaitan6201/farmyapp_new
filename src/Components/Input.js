@@ -95,6 +95,19 @@ const Input = props => {
         </select>
       );
       break;
+      case 'checkbox':
+      inputElement = (
+        <input
+        id={props.id}
+        type={props.type}
+        placeholder={props.placeholder}
+        onChange={changeHandler}
+        onBlur={touchHandler}
+        value='yes'
+        className="form_checkbox"
+      />
+      );
+      break;
       default:
       inputElement = null;
   }
